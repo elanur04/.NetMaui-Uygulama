@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiApp3.Model"
+             x:Class="MauiApp3.Views.YapilacaklarPage"
+             Title="Yapılacaklar"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, *">
+        <Grid Grid.Row="0" BackgroundColor="#00aac3" Padding="15" ColumnDefinitions="*, Auto">
+            <Label Text="Yapılacaklar" TextColor="White" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+            <ImageButton Source="plus_icon.png" Grid.Column="1" HeightRequest="30" WidthRequest="30" Clicked="OnAddClicked" BackgroundColor="Transparent"/>
+        </Grid>
+
+        <CollectionView x:Name="TodoList" Grid.Row="1" Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:ToDoItem">
+                    <Frame Margin="0,5" Padding="10" CornerRadius="5" HasShadow="True" BorderColor="LightGray">
+                        <Grid ColumnDefinitions="Auto, *, Auto, Auto" RowDefinitions="Auto, Auto">
+                            
+                            <CheckBox IsChecked="{Binding IsCompleted}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Color="#512BD4"/>
+
+                            <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="1" FontSize="18" TextColor="Black"/>
+                            
+                            <Label Text="{Binding Description}" Grid.Row="1" Grid.Column="1" FontSize="12" TextColor="Gray"/>
+                            
+                            <Label Text="{Binding Date, StringFormat='{0:yyyy/MM/dd HH:mm}'}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End" FontSize="10" TextColor="Gray" Margin="0,15,0,0"/>
+
+                            <ImageButton Source="edit_icon.png" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HeightRequest="5" WidthRequest="20" Clicked="OnEditClicked" CommandParameter="{Binding .}"/>
+
+                            <ImageButton Source="delete_icon.png" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HeightRequest="25" WidthRequest="25" Clicked="OnDeleteClicked" CommandParameter="{Binding .}" Margin="5,0,0,0"/>
+          
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

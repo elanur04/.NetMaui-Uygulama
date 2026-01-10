@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.Views.AyarlarPage"
+             Title="Ayarlar"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Spacing="20" Padding="20">
+
+        <Frame CornerRadius="10" BackgroundColor="#00aac3" Padding="15">
+            <Label Text="Uygulama Ayarları" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   TextColor="White" 
+                   HorizontalOptions="Center"/>
+        </Frame>
+
+        <Frame CornerRadius="10" Padding="15" HasShadow="True">
+            <Grid ColumnDefinitions="*, Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Koyu Tema" FontAttributes="Bold" FontSize="18"/>
+                    <Label Text="Uygulamanın temasını değiştirir" FontSize="12" TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <Switch x:Name="SwTema" 
+                        Grid.Column="1" 
+                        Toggled="OnTemaDegisti" 
+                        OnColor="#6200EE"/>
+            </Grid>
+        </Frame>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

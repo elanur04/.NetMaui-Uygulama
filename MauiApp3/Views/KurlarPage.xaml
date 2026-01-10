@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MauiApp3.Converters" 
+             x:Class="MauiApp3.Views.KurlarPage"
+             Title="Güncel Kurlar">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DegisimRengiConverter x:Key="DegisimRengiConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *" Padding="0" RowSpacing="0">
+
+        <Frame Grid.Row="0" BackgroundColor="#00aac3" Padding="15" CornerRadius="0" HasShadow="True">
+            <Grid ColumnDefinitions="*, Auto">
+                <Label Text="Piyasa Özeti" TextColor="White" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Button Grid.Column="1" Text="🔄" Clicked="OnYenileClicked" BackgroundColor="Transparent" FontSize="20" TextColor="White"/>
+            </Grid>
+        </Frame>
+
+        <Grid Grid.Row="1" BackgroundColor="#E0E0E0" Padding="10" ColumnDefinitions="2*, 1*, 1*, 1*">
+            <Label Grid.Column="0" Text="Tür" FontAttributes="Bold" TextColor="Black"/>
+            <Label Grid.Column="1" Text="Alış" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black"/>
+            <Label Grid.Column="2" Text="Satış" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black"/>
+            <Label Grid.Column="3" Text="Değişim" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black"/>
+        </Grid>
+
+        <CollectionView x:Name="DovizListesi" Grid.Row="2" BackgroundColor="White">
+            <CollectionView.EmptyView>
+                <Label Text="Veri yükleniyor veya bulunamadı..." HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray"/>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="2*, 1*, 1*, 1*">
+                        <Label Grid.Column="0" Text="{Binding Isim}" FontAttributes="Bold" TextColor="#00aac3" VerticalOptions="Center"/>
+
+                        <Label Grid.Column="1" Text="{Binding Alis}" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                        <Label Grid.Column="2" Text="{Binding Satis}" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                        <Label Grid.Column="3" Text="{Binding Degisim}" 
+                               TextColor="{Binding Degisim, Converter={StaticResource DegisimRengiConverter}}" 
+                               HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator x:Name="Yukleniyor" 
+                           IsRunning="False" 
+                           IsVisible="{Binding IsRunning, Source={x:Reference Yukleniyor}}"
+                           Color="#00aac3"
+                           Grid.Row="2" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center"
+                           HeightRequest="50"
+                           WidthRequest="50"/>
+
+    </Grid>
+</ContentPage>

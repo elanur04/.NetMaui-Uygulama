@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.Views.HaberlerPage"
+             Title="Haberler"
+             >
+
+    <Grid RowDefinitions="Auto, *">
+
+        <ScrollView Grid.Row="0" Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="10">
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Manşet" Clicked="KategoriSec" CommandParameter="manset" BackgroundColor="#D32F2F" HeightRequest="40" TextColor="White"/>
+                <Button Text="Son Dakika" Clicked="KategoriSec" CommandParameter="sondakika" BackgroundColor="#1976D2" HeightRequest="40" TextColor="White"/>
+                <Button Text="Spor" Clicked="KategoriSec" CommandParameter="spor" BackgroundColor="#388E3C" HeightRequest="40" TextColor="White"/>
+                <Button Text="Ekonomi" Clicked="KategoriSec" CommandParameter="ekonomi" BackgroundColor="#FBC02D" TextColor="Black" HeightRequest="40"/>
+                <Button Text="Teknoloji" Clicked="KategoriSec" CommandParameter="bilim_teknoloji" BackgroundColor="#7B1FA2" HeightRequest="40" TextColor="White"/>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <CollectionView x:Name="CvHaberler" 
+                Grid.Row="1" 
+                Margin="10"
+                SelectionMode="Single"
+                SelectionChanged="HaberSecildi">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="0" HasShadow="True" IsClippedToBounds="True" BackgroundColor="White" BorderColor="#E0E0E0">
+
+                        <Grid RowDefinitions="180, Auto, Auto">
+                            <Image Grid.Row="0" 
+                           Source="{Binding thumbnail, TargetNullValue='https://via.placeholder.com/300x180.png?text=Resim+Yok'}" 
+                           Aspect="AspectFill" 
+                           HeightRequest="180"
+                           BackgroundColor="LightGray"/>
+
+                            <Label Grid.Row="1" Text="{Binding title}" FontAttributes="Bold" FontSize="16" TextColor="Black" Padding="10,10,10,0" MaxLines="2" LineBreakMode="TailTruncation"/>
+                            <Label Grid.Row="2" Text="{Binding pubDate}" FontSize="12" TextColor="Gray" Padding="10,5,10,10"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator x:Name="Yukleniyor" Grid.Row="1" IsRunning="False" Color="Blue" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+    </Grid>
+</ContentPage>

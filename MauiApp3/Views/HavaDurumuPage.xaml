@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.Views.HavaDurumuPage"
+             Title="Hava Durumu"
+             >
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Frame Grid.Row="0" Margin="10" Padding="10" CornerRadius="10" BackgroundColor="#00aac3">
+            <Grid ColumnDefinitions="*, Auto, Auto">
+                <Entry x:Name="TxtSehir" Placeholder="Şehir adı girin (Örn: Bartın)" 
+                       TextColor="White" PlaceholderColor="#E0E0E0" Grid.Column="0"/>
+
+                <Button Text="➕" Clicked="OnEkleClicked"  
+                        Grid.Column="1" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+
+                <Button Text="🔄" Clicked="OnYenileClicked" 
+                        Grid.Column="2" BackgroundColor="Transparent" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+            </Grid>
+        </Frame>
+
+        <CollectionView x:Name="CvSehirler" Grid.Row="1" Margin="10">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="10" HasShadow="True" BackgroundColor="White">
+                        <VerticalStackLayout Spacing="5">
+
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding Ad}" FontSize="20" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center"/>
+
+                                <Button Text="⛔" Grid.Column="1" 
+                                        Clicked="OnSilClicked" 
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="Transparent" TextColor="Red" FontSize="18"/>
+                            </Grid>
+
+                            <Image Source="{Binding ResimUrl}" 
+                                   Aspect="AspectFit" 
+                                   HeightRequest="120"
+                                  />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

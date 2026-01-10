@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.Views.AnaSayfa"
+             Title="AnaSayfa"
+             >
+
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="10"
+        Spacing="10"
+        >
+            <Image Source="ben.jpg" HeightRequest="200" WidthRequest="200" Aspect="AspectFill" />
+
+            <Label Padding="50"
+            Text="Merhaba Ben Elanur Beycan :) "
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"
+                 />
+            <Label Text="Bartın Üniversitesi Bilgisayar Mühendisliği &#10; 3.sınıf öğrencisiyim."
+            FontSize="18"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            LineBreakMode="WordWrap"
+               />
+
+            <Label Text="Hızlı Erişim" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+
+            <Grid RowDefinitions="120, 120" ColumnDefinitions="*, *" ColumnSpacing="15" RowSpacing="15">
+
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                        <Label Text="📰" FontSize="30"/>
+                        <Label Text="Haberler" TextColor="Black" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                        <Label Text="⛅" FontSize="30"/>
+                        <Label Text="Hava Durumu" TextColor="Black" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                        <Label Text="💲" FontSize="30"/>
+                        <Label Text="Döviz Kurları" TextColor="Black" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" CornerRadius="15" HasShadow="True">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+                        <Label Text="⚙️" FontSize="30"/>
+                        <Label Text="Ayarlar" TextColor="Black" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

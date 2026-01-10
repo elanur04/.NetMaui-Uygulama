@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace MauiApp3.Converters // Namespace'in projene uygun olduðundan emin ol
+namespace MauiApp3.Converters // Namespace'in projene uygun olduÃ°undan emin ol
 {
     public class DegisimRengiConverter : IValueConverter
     {
@@ -10,7 +10,6 @@ namespace MauiApp3.Converters // Namespace'in projene uygun olduðundan emin ol
 
             string degisim = value.ToString();
 
-            // Eðer deðiþim oraný eksi (-) ile baþlýyorsa Kýrmýzý, yoksa Yeþil döndür
             if (degisim.Contains("-"))
             {
                 return Colors.Red;
